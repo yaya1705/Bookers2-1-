@@ -3,7 +3,11 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-
+         
+  validates :name, length: { in: 2..20 }
+  validates :introduction, length: { maximum: 50 }
+  # https://qiita.com/h1kita/items/772b81a1cc066e67930e 参照
+         
   has_many :books, dependent: :destroy
   has_one_attached :profile_image
 
