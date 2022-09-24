@@ -4,7 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
          
-  validates :name, length: { in: 2..20 }
+  validates :name, length: { in: 2..20 }, uniqueness: true
   validates :introduction, length: { maximum: 50 }
   # https://qiita.com/h1kita/items/772b81a1cc066e67930e 参照
          
